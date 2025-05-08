@@ -45,11 +45,8 @@ export async function fight(firstFighter, secondFighter) {
 
         const updateBar = (bar, current, total, position) => {
             const percentage = Math.max(0, (current / total) * 100);
-
-            const updatedBar = { ...bar };
-            updatedBar.style.width = `${percentage}%`;
+            bar.style.width = `${percentage}%`;
             bar.classList.remove('low', 'medium', 'high');
-            bar.style.width = updatedBar.style.width;
 
             const healthText = document.getElementById(`${position}-health-text`);
             healthText.innerText = `${current.toFixed(2) < 0 ? 0 : current.toFixed(2)}`;
