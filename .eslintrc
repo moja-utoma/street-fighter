@@ -15,7 +15,7 @@
         "no-underscore-dangle": 0,
         "no-useless-catch": 0,
         "no-param-reassign": ["warn"],
-        "no-use-before-define": ["error", { "functions": false }]
+        "no-use-before-define": ["warn"]
     },
     "ignorePatterns": ["node_modules", "dist"],
     "overrides": [
