@@ -1,5 +1,7 @@
 import createElement from '../helpers/domHelper';
+import { fight } from './fight';
 import { createFighterImage } from './fighterPreview';
+import showWinnerModal from './modal/winner';
 
 function createFighter(fighter, position) {
     const imgElement = createFighterImage(fighter);
@@ -23,7 +25,7 @@ function createFighters(firstFighter, secondFighter) {
 }
 
 function createHealthIndicator(fighter, position) {
-    const { name } = fighter;
+    const { name, health } = fighter;
     const container = createElement({ tagName: 'div', className: 'arena___fighter-indicator' });
     const fighterName = createElement({ tagName: 'span', className: 'arena___fighter-name' });
     const indicator = createElement({ tagName: 'div', className: 'arena___health-indicator' });
@@ -33,9 +35,17 @@ function createHealthIndicator(fighter, position) {
         attributes: { id: `${position}-fighter-indicator` }
     });
 
+    const healthText = createElement({
+        tagName: 'div',
+        className: 'arena___health-text',
+        attributes: { id: `${position}-health-text` }
+    });
+
     fighterName.innerText = name;
+    healthText.innerText = `${health}`;
+
     indicator.append(bar);
-    container.append(fighterName, indicator);
+    container.append(fighterName, indicator, healthText);
 
     return container;
 }
@@ -50,23 +60,37 @@ function createHealthIndicators(leftFighter, rightFighter) {
     return healthIndicators;
 }
 
+function createBattleLog() {
+    const log = document.createElement('div');
+    log.className = 'arena___battle-log';
+
+    const initialMessage = document.createElement('div');
+    initialMessage.textContent = '📜 Battle Log';
+    initialMessage.style.fontWeight = 'bold';
+    initialMessage.style.marginBottom = '0.5rem';
+
+    log.append(initialMessage);
+    return log;
+}
+
 function createArena(selectedFighters) {
     const arena = createElement({ tagName: 'div', className: 'arena___root' });
     const healthIndicators = createHealthIndicators(...selectedFighters);
     const fighters = createFighters(...selectedFighters);
+    const log = createBattleLog();
 
-    arena.append(healthIndicators, fighters);
+    arena.append(healthIndicators, fighters, log);
     return arena;
 }
 
-export default function renderArena(selectedFighters) {
+export default async function renderArena(selectedFighters) {
     const root = document.getElementById('root');
     const arena = createArena(selectedFighters);
 
     root.innerHTML = '';
     root.append(arena);
 
-    // todo:
-    // - start the fight
-    // - when fight is finished show winner
+    await fight(...selectedFighters).then(winner => {
+        showWinnerModal(winner);
+    });
 }

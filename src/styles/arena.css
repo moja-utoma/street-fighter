@@ -1,63 +1,103 @@
 .arena___root {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-image: url('../../resources/arena.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-image: url('../../resources/arena.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .arena___battlefield {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 60px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 60px;
 }
 
 .arena___right-fighter img {
-  transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .arena___fighter img {
-  height: 480px;
+    height: 480px;
 }
 
 .arena___fight-status {
-  display: flex;
-  margin: 30px;
-  justify-content: center;
+    display: flex;
+    margin: 30px;
+    justify-content: center;
 }
 
 .arena___fighter-name {
-  color: black;
-  -webkit-text-fill-color: white;
-  -webkit-text-stroke-width: 1px;
-  font-size: 26px;
-  font-family: 'Arial Black';
-  font-weight: 700;
+    color: black;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 1px;
+    font-size: 26px;
+    font-family: 'Arial Black';
+    font-weight: 700;
 }
 
 .arena___fighter-indicator {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin: 0 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 30px;
 }
 
 .arena___health-indicator {
-  width: 100%;
-  height: 25px;
-  border: 2px solid;
-  border-radius: 5px;
-  margin: 0 10px;
-  overflow: hidden;
+    width: 100%;
+    height: 25px;
+    border: 2px solid;
+    border-radius: 5px;
+    margin: 0 10px;
+    background-color: rgba(50, 50, 50, 0.7);
 }
 
 .arena___health-bar {
-  height: 100%;
-  width: 100%;
-  background-color: #ebd759;
+    height: 100%;
+    width: 100%;
+    background-color: green;
+}
+
+.arena___health-bar.low {
+    background-color: red;
+}
+.arena___health-bar.medium {
+    background-color: orange;
+}
+.arena___health-bar.high {
+    background-color: green;
+}
+
+.arena___health-text {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(221, 227, 185);
+  margin-top: 1rem;
+  text-align: center;
+  padding: 1rem 2rem;
+  border-radius: 50%;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0) 70%);  z-index: 1;
+}
+
+.arena___battle-log {
+    background: linear-gradient(to bottom, #fdf6e3, #f5e8c5);
+    border: 2px solid #d4b76e;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    color: #4b3d2a;
+    max-height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-sizing: border-box;
 }
