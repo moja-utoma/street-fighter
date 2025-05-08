@@ -20,5 +20,19 @@
 }
 
 .fighter-preview___info {
-    color: white;
+    background-color: #ffdfa7;
+    padding: 1rem 2rem;
+    border: 2px solid #ca9650;
+    border-radius: 8px;
+    box-shadow:
+        inset 0 0 10px #c9b79c,
+        0 8px 16px rgba(0, 0, 0, 0.2);
+    font-family: 'Georgia', serif;
+    color: #4b3621;
+    background-image: url('../../resources/scroll-texture.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
+
+
